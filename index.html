@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Mastery</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <!-- bind data to vue objects using : in front of the regular HTML attributes-->
+            <img :src="image"/>
+          </div>
+          <div class="product-info">
+            <!-- double brackets to refer to vue objects -->
+            <h1>{{ product }}</h1>
+            <p v-show="onSale">On Sale!</p>
+            <p v-if="inventory > 10">In Stock</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+            <p v-else>Out of Stock</p>
+            <p>{{ description }}</p>
+            <a :href="url"> <- This .jpg was converted to .avif using avif.io</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import Js -->
+    <script src="./main.js"></script>
+    <script>
+      /**
+       * mount the vue app using this line
+       * */
+      const mountedApp = app.mount('#app');
+    </script>
+  </body>
+</html>
