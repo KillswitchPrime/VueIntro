@@ -11,28 +11,27 @@
   <body>
     <div id="app">
       <div class="nav-bar"></div>
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <!-- bind data to vue objects using : in front of the regular HTML attributes-->
-            <img :src="image"/>
-          </div>
-          <div class="product-info">
-            <!-- double brackets to refer to vue objects -->
-            <h1>{{ product }}</h1>
-            <p v-show="onSale">On Sale!</p>
-            <p v-if="inventory > 10">In Stock</p>
-            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
-            <p v-else>Out of Stock</p>
-            <p>{{ description }}</p>
-            <a :href="url"> <- This .jpg was converted to .avif using avif.io</a>
-          </div>
-        </div>
-      </div>
+
+      <div class="cart">Cart({{cart.length}})</div>
+
+      <product-display 
+        :premium="premium"
+        :cart="cart"
+        @add-to-cart="updateCart" 
+        @remove-from-cart="reduceCart">
+      </product-display>
+
     </div>
 
-    <!-- Import Js -->
+    <!-- Import Import App -->
     <script src="./main.js"></script>
+
+    <!-- Import Components-->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
+
     <script>
       /**
        * mount the vue app using this line
